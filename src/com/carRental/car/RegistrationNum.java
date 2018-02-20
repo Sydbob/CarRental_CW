@@ -2,6 +2,8 @@ package com.carRental.car;
 
 import com.carRental.Util;
 
+import static java.lang.System.out;
+
 
 public class RegistrationNum {
     private char letter;
@@ -28,17 +30,19 @@ public class RegistrationNum {
 
     public String GenStringRep() {return "" + letter + number;}
 
-    //65-90 ascii range for uppercase letters
-    public char GenRandomLetter(){
-        return (char) Util.GenRandomNumber(65,90);
-    }
-
-    //range 1111(inclusive)-9999(inclusive) to make it simpler
-    public int GenRandomNumber(){
-        return Util.GenRandomNumber(1111, 9999);
-    }
-
     @Override
     public String toString() { return stringRep; }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof RegistrationNum))
+            return false;
+        RegistrationNum rn = (RegistrationNum) obj;
+        return this.number == rn.number;
+    }
+
+    /*
+    public boolean equals(RegistrationNum rn) {
+        return  this.number == rn.GetNumber();
+    }*/
 }

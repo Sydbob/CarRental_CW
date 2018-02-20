@@ -6,7 +6,7 @@ public abstract class AbstractCar implements Car {
     private int fuelLevel;
     private boolean isRented;
 
-    public AbstractCar(RegistrationNum registrationNum, int tankCapacity, int fuelLevel, boolean isRented)
+    public AbstractCar(RegistrationNum registrationNum, int fuelLevel, boolean isRented, int tankCapacity)
     {
         this.registrationNum = new RegistrationNum(registrationNum.GetLetter(), registrationNum.GetNumber());
         this.tankCapacity = tankCapacity;
@@ -39,5 +39,20 @@ public abstract class AbstractCar implements Car {
             return i;
         }
         return amount;
+    }
+
+    @Override
+    public String toString() {
+        String s = "\nCar type: ";
+        if (tankCapacity == 49)
+            s += "Small,";
+        else
+            s+= "Large";
+        s+= " Registration No: " + registrationNum + ", Fuel Level: " + fuelLevel + ", Status: ";
+        if (isRented)
+            s+= "Rented";
+        else
+            s+= "Not Rented";
+        return s;
     }
 }
