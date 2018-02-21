@@ -13,7 +13,10 @@ public class RegistrationNum {
     public char GetLetter() {return letter;}
     public int GetNumber(){return number;}
 
-    public RegistrationNum() {}
+    public RegistrationNum(String str) {
+        this.letter = str.charAt(0);
+        this.number = Integer.parseInt(str.substring(1));
+    }
     //temp constructor make private/delete later
     public RegistrationNum(char letter, int number){
         this.number = number;
@@ -21,12 +24,6 @@ public class RegistrationNum {
         this.stringRep = "" + letter + number;
     }
 
-    /*public RegistrationNum GenRegistrationNum() {
-        char letter = GenRandomLetter();
-        int number = GenRandomNumber();
-        String rep = "" + letter + number;
-        return new RegistrationNum(letter,number, rep);
-    }*/
 
     public String GenStringRep() {return "" + letter + number;}
 
@@ -38,7 +35,7 @@ public class RegistrationNum {
         if (!(obj instanceof RegistrationNum))
             return false;
         RegistrationNum rn = (RegistrationNum) obj;
-        return this.number == rn.number;
+        return this.number == rn.number && this.letter == rn.letter;
     }
 
     /*

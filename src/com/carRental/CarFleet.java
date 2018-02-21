@@ -1,60 +1,42 @@
 package com.carRental;
 import com.carRental.car.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static java.lang.System.out;
 
 public class CarFleet {
     private final Car[] smallCars;
     private final Car[] largeCars;
-    private static final int MAX_SMALL_CARS = 6;
+    private static final int MAX_SMALL_CARS = 20;
     private static final int MAX_LARGE_CARS = 10;
 
     public final Car[] GetSmallCars() {return smallCars;}
 
-    //constructs the fleet -> generates all small and large cars
+    //Class constructor generates the car fleet
+    //Registration numbers for cars are generated randomly via given range for letters and numbers
+    //All cars are created with a full tank
+    //All cars are set to not rented at the start
     public CarFleet()
     {
         smallCars = new Car[MAX_SMALL_CARS];
         largeCars = new Car[MAX_LARGE_CARS];
-
+        Set<String> hashSet = new HashSet<String>();
+        String regNum;
+        //generate small cars fleet first
+        //to make it simpler, registration number range for small cars is 1000-5000 and 5001-9999 for large cars)
+        //letters for both small and large cars are generated via ASCII range 65-90 (for upper case A-Z letters)
         for (int i = 0; i< MAX_SMALL_CARS; i++)
         {
-            //gen reg number, make sure it;s unique, then add a new car w/ it
-            boolean unique = false;
-            //65-90 range for ASCII upper case letters A-Z (for both small and large cars)
-            //to make it simpler, registration number range for small cars is 1000-5000 and 5001-9999 for large cars)
-            RegistrationNum rn = new RegistrationNum((char)Util.GenRandomNumber(65,65), Util.GenRandomNumber(1,6));
-            if (i == 0){
-                smallCars[i] = new SmallCar(rn, 49, false);
-                out.print("\nfirst car" + rn);
-                }
-            while(!unique)
+            regNum = "" + (char)Util.GenRandomNumber(65,65) + Util.GenRandomNumber(1,20);
+            while(!hashSet.add(regNum))
             {
-                rn = new RegistrationNum((char)Util.GenRandomNumber(65,65), Util.GenRandomNumber(1,6));
-                //check each rn of each car, if not unique, generate rn again, check again until unique
-                for (int j = 0; j < MAX_SMALL_CARS; j++)
-                {
-                    if (smallCars[j] == null)
-                        break;
-                    else if (smallCars[j] != null && smallCars[j].GetRegistrationNum().equals(rn))
-                    {
-                        out.print("failed equals, back to generate the number");
-                        unique = false;
-                        break;
-                    }
-                    else
-                    {
-                        unique = true;
-                    }
-                }
-
+                regNum = "" + (char)Util.GenRandomNumber(65,65) + Util.GenRandomNumber(1,20);
             }
-            out.print("\nmaking car " + rn + " " + i);
+            RegistrationNum rn = new RegistrationNum(regNum);
             smallCars[i] = new SmallCar(rn, 49, false);
-
         }
-        //make sure licences are unique
-        //set rented to false for all at the start
-        //set tanks to full
+        //generate the large fleet same as small fleet
     }
 }
