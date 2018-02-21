@@ -19,17 +19,13 @@ public abstract class AbstractCar implements Car {
     }
     public int GetTankCapacity() {return tankCapacity;}
     public int GetFuelLevel() {return fuelLevel;}
-    public boolean IsTankFull() {
-        if (fuelLevel == tankCapacity)
-            return true;
-        else
-            return false;
-    }
+    public boolean TankIsFull() {return fuelLevel == tankCapacity;}
+    public boolean TankIsEmpty() {return fuelLevel <= 0;}
     public boolean IsRented() {return isRented;}
 
     public int AddFuel(int amount)
     {
-        if(IsTankFull())
+        if(TankIsFull())
             return 0;
         fuelLevel += amount;
         if (fuelLevel > tankCapacity)
@@ -41,6 +37,19 @@ public abstract class AbstractCar implements Car {
         return amount;
     }
 
+    @Override
+    public void DeductFuel(int amount) {
+         fuelLevel -= amount;
+    }
+
+    public int Drive(int distance) {
+        //car can only be driven if it's rented and tank is full
+        if(!this.TankIsEmpty() && this.IsRented()){
+            return this.ConsumeFuel(distance); //consumes the fuel and return amount consumed
+        }
+        else
+            return -1; //return -1 if the car cannot be driven
+    }
     @Override
     public String toString() {
         String s = "\nCar type: ";
