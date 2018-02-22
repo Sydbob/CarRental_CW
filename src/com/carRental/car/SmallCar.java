@@ -9,6 +9,8 @@ public class SmallCar extends AbstractCar {
 
     @Override
     public int ConsumeFuel(int distance) {
+        if (distance <= 20)
+            return 1;
         int amountConsumed = distance / 20;
         this.DeductFuel(amountConsumed);
         return amountConsumed;

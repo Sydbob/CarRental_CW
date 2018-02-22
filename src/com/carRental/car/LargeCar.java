@@ -10,6 +10,8 @@ public class LargeCar extends AbstractCar {
     @Override
     public int ConsumeFuel(int distance) {
         int amountConsumed;
+        if (distance <= 10)
+            return 1;
         if (distance <= 50)
         {
              amountConsumed= distance /10;

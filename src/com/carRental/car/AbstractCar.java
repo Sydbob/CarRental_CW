@@ -8,14 +8,14 @@ public abstract class AbstractCar implements Car {
 
     public AbstractCar(RegistrationNum registrationNum, int fuelLevel, boolean isRented, int tankCapacity)
     {
-        this.registrationNum = new RegistrationNum(registrationNum.GetLetter(), registrationNum.GetNumber());
+        this.registrationNum = new RegistrationNum(registrationNum);
         this.tankCapacity = tankCapacity;
         this.fuelLevel = fuelLevel;
         this.isRented = isRented;
     }
 
     public RegistrationNum GetRegistrationNum() {
-        return new RegistrationNum(registrationNum.GetLetter(), registrationNum.GetNumber());
+        return new RegistrationNum(registrationNum);
     }
     public int GetTankCapacity() {return tankCapacity;}
     public int GetFuelLevel() {return fuelLevel;}

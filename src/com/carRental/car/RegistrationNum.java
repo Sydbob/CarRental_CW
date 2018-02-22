@@ -2,44 +2,41 @@ package com.carRental.car;
 
 import com.carRental.Util;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static java.lang.System.out;
 
 
 public class RegistrationNum {
-    private char letter;
-    private int number;
-    private String stringRep;
+    private final char letter;
+    private final int number;
+    private final String stringRep;
+    private static Set<String> numbersSet = new HashSet<String>();
 
     public char GetLetter() {return letter;}
     public int GetNumber(){return number;}
 
-    public RegistrationNum(String str) {
+    //copy constructor
+    public RegistrationNum(RegistrationNum rn){ this((rn.GetStringRep()));}
+
+    private RegistrationNum(String str) {
         this.letter = str.charAt(0);
         this.number = Integer.parseInt(str.substring(1));
-    }
-    //temp constructor make private/delete later
-    public RegistrationNum(char letter, int number){
-        this.number = number;
-        this.letter = letter;
-        this.stringRep = "" + letter + number;
+        this.stringRep = new String(str);
     }
 
+    public static RegistrationNum GenRandomRegNum(int MIN_LETTER, int MAX_LETTER, int MIN_NUMBER, int MAX_NUMBER){
+        String s = "" + (char)Util.GenRandomNumber(MIN_LETTER,MAX_LETTER) + Util.GenRandomNumber(MIN_NUMBER, MAX_NUMBER);
+        while (!numbersSet.add(s))
+            s = "" + (char)Util.GenRandomNumber(MIN_LETTER,MAX_LETTER) + Util.GenRandomNumber(MIN_NUMBER, MAX_NUMBER);
+        return new RegistrationNum(s);
+    }
 
-    public String GenStringRep() {return "" + letter + number;}
+    public String GetStringRep() {return "" + letter + number;}
 
     @Override
     public String toString() { return stringRep; }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof RegistrationNum))
-            return false;
-        RegistrationNum rn = (RegistrationNum) obj;
-        return this.number == rn.number && this.letter == rn.letter;
-    }
 
-    /*
-    public boolean equals(RegistrationNum rn) {
-        return  this.number == rn.GetNumber();
-    }*/
 }

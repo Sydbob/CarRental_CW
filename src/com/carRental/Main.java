@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         CarFleet carFleet = new CarFleet();
+        carFleet.Populate();
 
 
         for (Car c : carFleet.GetAllCars())
