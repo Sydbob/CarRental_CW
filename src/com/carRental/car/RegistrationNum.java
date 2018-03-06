@@ -11,7 +11,7 @@ public class RegistrationNum {
     private final int number;
     private final String stringRep;
     private static Set<String> numbersSet = new HashSet<>();
-    //to make it simpler, registration numbers are in 1000-9999 range)
+    //to make it simpler, registration numbers are in 1000-9999 range
     //letters for registration number are A-Z (capital only) 60-90
     private static final int MIN_LETTER = 65; //ascii
     private static final int MAX_LETTER = 90; //ascii
@@ -27,7 +27,7 @@ public class RegistrationNum {
     private RegistrationNum(String str) {
         this.letter = str.charAt(0);
         this.number = Integer.parseInt(str.substring(1));
-        this.stringRep = new String(str);
+        this.stringRep = str;
     }
 
     //validity check fot this method is being handles at a higher level, but
@@ -47,7 +47,7 @@ public class RegistrationNum {
     public String GetStringRep() {return "" + letter + number;}
 
     @Override
-    public String toString() { return stringRep; }
+    public String toString() {return stringRep;}
 
 
 }

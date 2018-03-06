@@ -53,6 +53,6 @@ public class LicenceNum {
     }
 
     public boolean equals(LicenceNum licenceNum) {
-        return this.initials == licenceNum.initials && this.year == licenceNum.year && this.serialNum == licenceNum.serialNum;
+        return this.initials.equals(licenceNum.initials) && this.year == licenceNum.year && this.serialNum == licenceNum.serialNum;
     }
 }
