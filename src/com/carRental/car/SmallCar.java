@@ -7,12 +7,18 @@ public class SmallCar extends AbstractCar {
         super(registrationNum, fuelLevel, isRented, MAX_TANK_CAPACITY);
     }
 
-    @Override
-    public int ConsumeFuel(int distance) {
-        if (distance <= 20)
-            return 1;
-        int amountConsumed = distance / 20;
-        this.DeductFuel(amountConsumed);
-        return amountConsumed;
+    public int Drive(int distance) {
+        if (distance <= 0)
+            throw new IllegalArgumentException("Distance cannot be 0 or less");
+        if(!this.TankIsEmpty() && this.IsRented()){
+            if (distance <= 20)
+                return 1;
+            int amountConsumed = distance / 20;
+            this.SetFuel(this.GetFuelLevel() - amountConsumed);
+            return amountConsumed;
+        }
+        else
+            return -1; //return -1 if the car cannot be driven
     }
+
 }

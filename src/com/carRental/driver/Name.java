@@ -8,6 +8,8 @@ public class Name {
     public String GetLastName() {return lastName; }
 
     public Name(String firstName, String lastName){
+        if (firstName == null || lastName == null)
+            throw new IllegalArgumentException("Name or surname cannot be null");
         this.firstName = firstName;
         this.lastName= lastName;
     }
@@ -15,5 +17,14 @@ public class Name {
     public String GetInitials() {
         String s = "" + firstName.charAt(0) + lastName.charAt(0);
         return s.toUpperCase();
+    }
+
+     public boolean equals(Name name) {
+        return this.firstName.equals(name.GetFirstName()) && this.lastName.equals(name.GetLastName());
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
     }
 }

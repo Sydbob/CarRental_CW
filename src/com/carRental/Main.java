@@ -1,34 +1,25 @@
 package com.carRental;
 import com.carRental.car.*;
-import com.carRental.driver.*;
 
 import static java.lang.System.out;
 
 public class Main {
 
     public static void main(String[] args) {
-        CarFleet carFleet = new CarFleet();
-        carFleet.Populate();
+        RentAgency rentAgency = new RentAgency();
+        rentAgency.Populate();
 
 
-        for (Car c : carFleet.GetAllCars())
+        for (Car c : rentAgency.GetAllCars())
         {
             out.print(c);
         }
 
-        out.println("\ndrive 200km, fuel consumed= " + carFleet.GetAllCars()[0].Drive(200));
-        out.println("fuel in the tank= " + carFleet.GetAllCars()[0].GetFuelLevel());
-
-        out.println("drive 200km, fuel consumed= " + carFleet.GetSmallCars()[0].Drive(200));
-        out.println("fuel in the tank= " + carFleet.GetSmallCars()[0].GetFuelLevel());
-        out.println("drive 200km, fuel consumed= " + carFleet.GetSmallCars()[0].Drive(200));
-        out.println("fuel in the tank= " + carFleet.GetSmallCars()[0].GetFuelLevel());
-
-        out.println("drive 200km, fuel consumed= " + carFleet.GetLargeCars()[0].Drive(200));
-        out.println("fuel in the tank= " + carFleet.GetLargeCars()[0].GetFuelLevel());
-        out.println("\ndrive 200km, fuel consumed= " + carFleet.GetAllCars()[5].Drive(200));
-        out.println("fuel in the tank= " + carFleet.GetAllCars()[5].GetFuelLevel());
-
+        out.println();
+        out.println(rentAgency.AvailableCars(49));
+        out.println(rentAgency.AvailableCars(4));
+        out.println(rentAgency.AvailableCars(60));
+        out.println(rentAgency.AvailableCars(50));
 
 
 
