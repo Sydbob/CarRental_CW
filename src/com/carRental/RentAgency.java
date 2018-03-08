@@ -160,7 +160,7 @@ public class RentAgency {
             if (rentedCars.get(dl).GetFuelLevel() < rentedCars.get(dl).GetTankCapacity()){
                 int fuelToFill = rentedCars.get(dl).GetTankCapacity() - rentedCars.get(dl).GetFuelLevel();
                 rentedCars.get(dl).SetRented(false);
-                //add fuel to fill tank
+                rentedCars.get(dl).SetFuel(rentedCars.get(dl).GetTankCapacity());
                 rentedCars.remove(dl);
                 return  fuelToFill;
             }

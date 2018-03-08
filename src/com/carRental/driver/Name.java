@@ -8,7 +8,7 @@ public class Name {
     public String GetLastName() {return lastName; }
 
     public Name(String firstName, String lastName){
-        if (firstName == null || lastName == null)
+        if (firstName == null || firstName.equals("") || lastName == null || lastName.equals(""))
             throw new IllegalArgumentException("Name or surname cannot be null");
         this.firstName = firstName;
         this.lastName= lastName;
