@@ -43,8 +43,7 @@ public abstract class AbstractCar implements Car {
         fuelLevel = amount;
         if (fuelLevel > tankCapacity)
             fuelLevel= tankCapacity;
-        if (fuelLevel < 0)
-            fuelLevel = 0;
+
     }
 
     public void SetRented(boolean rented) {

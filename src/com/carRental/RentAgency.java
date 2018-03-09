@@ -133,7 +133,7 @@ public class RentAgency {
                 int carID = AvailableSmallCarID();
                 smallCars[carID].SetRented(true);
                 rentedCars.put(drivingLicence, smallCars[carID]);
-                return "A small car was successfully issued";
+                return "A car was successfully issued";
             }
         }
 
@@ -141,16 +141,16 @@ public class RentAgency {
         if (tankCapacity > SmallCar.MAX_TANK_CAPACITY && tankCapacity <= LargeCar.MAX_TANK_CAPACITY)
         {
             if (age < 25 || licenceYears < 5 || AvailableCars(tankCapacity) <= 0)
-                return "A large car cannot be issued";
+                return "A car cannot be issued";
             else{
                 int carID = AvailableLargeCarID();
                 largeCars[carID].SetRented(true);
                 rentedCars.put(drivingLicence, largeCars[carID]);
-                return "A large car was successfully issued";
+                return "A car was successfully issued";
             }
         }
 
-        return "A required car cannot be issued";
+        return "Required car cannot be issued";
     }
 
     public int TerminateRental(DrivingLicence dl){

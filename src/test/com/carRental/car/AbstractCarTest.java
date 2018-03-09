@@ -101,7 +101,7 @@ public class AbstractCarTest {
         c.SetFuel(500);
         assertEquals(50, c.GetFuelLevel());
         c.SetFuel(-20);
-        assertEquals(0, c.GetFuelLevel());
+        assertEquals(-20, c.GetFuelLevel());
     }
 
     @Test
