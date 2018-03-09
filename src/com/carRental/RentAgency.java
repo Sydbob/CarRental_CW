@@ -7,6 +7,15 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.util.*;
 
+/*
+Author: Irina Kovalova
+Student Number: 170716899
+Software used: Intellij IDEA, Java v 1.8, Junit v 4.12
+OS: Windows 10
+Git repository: https://github.com/Sydbob/CarRental_CW/tree/master/src
+Last updated: 09/03/2018
+Notes: src/com.carRental folder contains all .java files with developed classes, test folder contains tests for each class.
+ */
 
 public class RentAgency {
     private final Car[] smallCars;
@@ -83,6 +92,7 @@ public class RentAgency {
         }
     }
 
+    //method that finds an id of next available small car
     public int AvailableSmallCarID()
     {
         for (int i =0; i <smallCars.length; i++){
@@ -94,6 +104,7 @@ public class RentAgency {
         return -1;
     }
 
+    //method that finds an id of next available large car
     public int AvailableLargeCarID()
     {
         for (int i =0; i <largeCars.length; i++){
@@ -110,6 +121,7 @@ public class RentAgency {
         return rentedCars.get(drivingLicence);
     }
 
+    //method to rent out a car to a person
     public String IssueCar(DrivingLicence drivingLicence, int tankCapacity){
         boolean canBeIssued = false;
         LocalDate now = LocalDate.now();
@@ -153,6 +165,7 @@ public class RentAgency {
         return "Required car cannot be issued";
     }
 
+    //method to terminate persons car renting contract
     public int TerminateRental(DrivingLicence dl){
         if (!rentedCars.containsKey(dl))
             return 0;

@@ -23,6 +23,7 @@ public abstract class AbstractCar implements Car {
     public boolean TankIsEmpty() {return fuelLevel <= 0;}
     public boolean IsRented() {return isRented;}
 
+    //method to add fuel to the car in whole Litres
     public int AddFuel(int amount)
     {
         if(amount < 0)
