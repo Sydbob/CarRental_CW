@@ -15,8 +15,8 @@ public class RegistrationNum {
     //letters for registration number are A-Z (capital only) 60-90
     private static final int MIN_LETTER = 65; //ascii
     private static final int MAX_LETTER = 90; //ascii
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 5;
+    private static final int MIN_NUMBER = 1000;
+    private static final int MAX_NUMBER = 9999;
     public static final int MAX_UNIQUE_COMBOS = (MAX_LETTER - MIN_LETTER + 1 ) * (MAX_NUMBER - MIN_NUMBER + 1);
 
     public char GetLetter() {return letter;}

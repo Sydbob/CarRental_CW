@@ -1,5 +1,7 @@
 package com.carRental.driver;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +35,9 @@ public class LicenceNum {
     //this assumes that the name+year combo passed are from a unique person (i.e. this assumes that if a duplicate name + year is provided it's a different person)
     public static LicenceNum GenLicenceNum(Name name, int year){
         int serial = 10;
+        LocalDate today = LocalDate.now();
+        if (year > today.getYear() || year < 1900)
+            throw new IllegalArgumentException("Invalid year provided");
         String string = "" + name.GetFirstName() + name.GetLastName() + year;
         //if combination of initials + year + serial number already is taken, increase serial number to make it unique
         if (licenceNums.containsKey(string)){
