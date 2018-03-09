@@ -13,8 +13,8 @@ public class RentAgency {
     private final Car[] largeCars;
     private Map<DrivingLicence,Car> rentedCars = new HashMap<>();
 
-    private static final int MAX_SMALL_CARS = 5;
-    private static final int MAX_LARGE_CARS = 5;
+    public static final int MAX_SMALL_CARS = 30;
+    public static final int MAX_LARGE_CARS = 20;
 
 
 

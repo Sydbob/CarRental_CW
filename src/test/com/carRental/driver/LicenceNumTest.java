@@ -71,4 +71,14 @@ public class LicenceNumTest {
         ln = LicenceNum.GenLicenceNum(n1, 1990);
         assertNotEquals(ln.GetStringRep(), ln2.GetStringRep());
     }
+
+    @Test
+    public void testEquals(){
+        LicenceNum ln = LicenceNum.GenLicenceNum(n1, 1990);
+        assert(ln.equals(ln));
+        assertFalse(ln.equals(LicenceNum.GenLicenceNum(n1, 1999)));
+        //because licence number class generates unique licences, if it receives a name and a year that are the same..
+        //....it still assumes these are two different people and names and year happened to coincide
+        assertFalse(ln.equals(LicenceNum.GenLicenceNum(n1, 1990)));
+    }
 }

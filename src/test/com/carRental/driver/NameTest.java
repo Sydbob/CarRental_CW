@@ -56,4 +56,22 @@ public class NameTest {
 
     }
 
+    @Test
+    public void testEquals(){
+        Name n = new Name("Bob", "Smith");
+        assert(n.equals(n));
+        assertFalse(n.equals("Bob"));
+        assertFalse(n.equals(new Name("Bob", "Jones")));
+        assertTrue(n.equals(new Name("Bob", "Smith")));
+        assertFalse(n.equals(new Name("Bo", "Smith")));
+        assertFalse(n.equals(new Name("bob", "smith")));
+    }
+
+    @Test
+    public void testToString(){
+        Name n = new Name("Mark", "Smith");
+        assertEquals("Mark Smith", n.toString());
+        assertNotEquals("MarkSmith", n.toString());
+    }
+
 }

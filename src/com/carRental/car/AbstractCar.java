@@ -29,13 +29,13 @@ public abstract class AbstractCar implements Car {
             throw new IllegalArgumentException("Fuel amount cannot be negative number");
         if(fuelLevel == tankCapacity)
             return 0;
-        fuelLevel += amount;
-        if (fuelLevel > tankCapacity)
+        if ((fuelLevel + amount) > tankCapacity)
         {
             int i = tankCapacity - fuelLevel;
             fuelLevel = tankCapacity;
             return i;
         }
+        fuelLevel += amount;
         return amount;
     }
 
@@ -43,6 +43,8 @@ public abstract class AbstractCar implements Car {
         fuelLevel = amount;
         if (fuelLevel > tankCapacity)
             fuelLevel= tankCapacity;
+        if (fuelLevel < 0)
+            fuelLevel = 0;
     }
 
     public void SetRented(boolean rented) {
