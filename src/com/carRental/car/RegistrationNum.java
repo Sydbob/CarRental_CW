@@ -5,7 +5,9 @@ import com.carRental.Util;
 import java.util.HashSet;
 import java.util.Set;
 
-
+/*
+A cass that generates random and unique registration numbers of format: A1000 (capital letter followed by 4-digit number)
+ */
 public class RegistrationNum {
     private final char letter;
     private final int number;

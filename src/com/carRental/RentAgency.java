@@ -13,8 +13,8 @@ Student Number: 170716899
 Software used: Intellij IDEA, Java v 1.8, Junit v 4.12
 OS: Windows 10
 Git repository: https://github.com/Sydbob/CarRental_CW/tree/master/src
-Last updated: 09/03/2018
-Notes: src/com.carRental folder contains all .java files with developed classes, test folder contains tests for each class.
+Last updated: 12/03/2018
+Notes: com.carRental folder contains all .java files with developed classes, test folder contains tests for each class.
  */
 
 public class RentAgency {
@@ -24,6 +24,10 @@ public class RentAgency {
 
     public static final int MAX_SMALL_CARS = 30;
     public static final int MAX_LARGE_CARS = 20;
+    public static final int MIN_AGE = 21;
+    public static final int MIN_LICENCE_YEARS = 1;
+    public static final int LARGE_CAR_AGE = 25;
+    public static final int LARGE_CAR_LICENCE_YEARS = 5;
 
 
 
@@ -132,7 +136,7 @@ public class RentAgency {
 
         //initial check if a person can even rent a car (min requirements: 21 y.o, full licence, 1 year of having licence)
         //cannot be renting more than 1 car
-        if (!drivingLicence.IsFull() || age < 21 || licenceYears < 1 || rentedCars.containsKey(drivingLicence))
+        if (!drivingLicence.IsFull() || age < MIN_AGE || licenceYears < MIN_LICENCE_YEARS || rentedCars.containsKey(drivingLicence))
             return "A car cannot be issued";
 
         //small car: age 21+, licence years 1+
@@ -152,7 +156,7 @@ public class RentAgency {
         //large car: age 25+, licence years 5+
         if (tankCapacity > SmallCar.MAX_TANK_CAPACITY && tankCapacity <= LargeCar.MAX_TANK_CAPACITY)
         {
-            if (age < 25 || licenceYears < 5 || AvailableCars(tankCapacity) <= 0)
+            if (age < LARGE_CAR_AGE || licenceYears < LARGE_CAR_LICENCE_YEARS || AvailableCars(tankCapacity) <= 0)
                 return "A car cannot be issued";
             else{
                 int carID = AvailableLargeCarID();
@@ -165,7 +169,7 @@ public class RentAgency {
         return "Required car cannot be issued";
     }
 
-    //method to terminate persons car renting contract
+    //method to terminate persons car renting contract, returns whole Litres they're liable for if returned car's tank is not full
     public int TerminateRental(DrivingLicence dl){
         if (!rentedCars.containsKey(dl))
             return 0;

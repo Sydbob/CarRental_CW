@@ -11,7 +11,6 @@ public class LicenceNum {
     private final int year;
     private final int serialNum;
     private static Map<String, Integer> licenceNums = new HashMap<>();
-    //map of initials+year to count
 
     public String GetInitials () {return initials;}
     public int GetYear() {return year;}

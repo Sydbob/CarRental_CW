@@ -15,6 +15,7 @@ public class DrivingLicence {
     private final boolean full; //true if full licence, false if not
 
     //a constructor to create new drivers licence (generates new unique licence number)
+    //it assumes that information passes like name and date of birth are of unique person
     public DrivingLicence (Name name, Calendar dob, Calendar doi, boolean full)    {
         this.name = new Name(name.GetFirstName(), name.GetLastName());
         LocalDate localDate = doi.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

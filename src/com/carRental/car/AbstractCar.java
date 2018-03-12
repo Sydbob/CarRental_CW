@@ -1,5 +1,8 @@
 package com.carRental.car;
 
+/*
+abstract class that implements most methods of car interface.
+ */
 public abstract class AbstractCar implements Car {
     private final RegistrationNum registrationNum;
     private final int tankCapacity;

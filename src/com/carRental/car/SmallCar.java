@@ -7,6 +7,7 @@ public class SmallCar extends AbstractCar {
         super(registrationNum, fuelLevel, isRented, MAX_TANK_CAPACITY);
     }
 
+    //method to driv a large car, return fuel consumed in whole L
     public int Drive(int distance) {
         if (distance <= 0)
             throw new IllegalArgumentException("Distance cannot be 0 or less");

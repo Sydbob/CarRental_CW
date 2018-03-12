@@ -9,7 +9,7 @@ public class Name {
 
     public Name(String firstName, String lastName){
         if (firstName == null || firstName.equals("") || lastName == null || lastName.equals(""))
-            throw new IllegalArgumentException("Name or surname cannot be null");
+            throw new IllegalArgumentException("Name or surname cannot be null or empty");
         this.firstName = firstName;
         this.lastName= lastName;
     }
